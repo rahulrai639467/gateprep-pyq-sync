@@ -249,7 +249,7 @@ def scan_source(
                 "url": url,
                 "host": urlsplit(url).hostname,
                 "document_type": classify_document(title, url),
-                "year_hint": (YEAR_PATTERN.search(title + " " + url)?.group(1) if False else None),
+                "year_hint": None,
                 "first_seen_at": old.get("first_seen_at", now),
                 "last_seen_at": now,
                 "stale": False,
