@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "project": "GatePrep",
+  "scope": "GATE Computer Science and Information Technology (CS) source monitoring",
+  "allowed_hosts": [
+    "gate2026.iitg.ac.in",
+    "gate2025.iitr.ac.in"
+  ],
+  "official_sources": [
+    {
+      "id": "gate-2026-downloads",
+      "label": "GATE 2026 historical question-paper downloads",
+      "organizing_institute": "IIT Guwahati",
+      "year": 2026,
+      "index_url": "https://gate2026.iitg.ac.in/download.html",
+      "purpose": "Historical paper archive and year-wise downloads"
+    },
+    {
+      "id": "gate-2026-papers-keys",
+      "label": "GATE 2026 master question papers and answer keys",
+      "organizing_institute": "IIT Guwahati",
+      "year": 2026,
+      "index_url": "https://gate2026.iitg.ac.in/QPs-answer-keys.html",
+      "purpose": "Current official master papers and matching answer keys"
+    },
+    {
+      "id": "gate-2025-downloads",
+      "label": "GATE 2025 historical question-paper downloads",
+      "organizing_institute": "IIT Roorkee",
+      "year": 2025,
+      "index_url": "https://gate2025.iitr.ac.in/download.html",
+      "purpose": "Historical paper archive"
+    },
+    {
+      "id": "gate-2025-papers-keys",
+      "label": "GATE 2025 master question papers and final answer keys",
+      "organizing_institute": "IIT Roorkee",
+      "year": 2025,
+      "index_url": "https://gate2025.iitr.ac.in/question-papers.html",
+      "purpose": "Master papers and associated final answer keys"
+    }
+  ]
+}
