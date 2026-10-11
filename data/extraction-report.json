@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-11T18:16:28+00:00",
-  "status": "ok",
+  "generated_at": "2026-10-11T18:40:38+00:00",
+  "status": "degraded",
   "note": "Candidate text and key mapping are not verified. Every record is kept in needs-review; no solution or memory tip is invented.",
   "pairs_attempted": 9,
   "pairs": [
