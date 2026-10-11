@@ -378,7 +378,7 @@ def extract_candidates(index: dict[str, Any], sources: dict[str, Any]) -> tuple[
     report = {
         "schema_version": 1,
         "generated_at": utc_now(),
-        "status": "ok" if not failures else "degraded",
+        "status": "ok" if not failures and not pairing_issues and all(item["status"] == "ok" for item in pair_reports) else "degraded",
         "note": "Candidate text and key mapping are not verified. Every record is kept in needs-review; no solution or memory tip is invented.",
         "pairs_attempted": len(pairs),
         "pairs": pair_reports,
