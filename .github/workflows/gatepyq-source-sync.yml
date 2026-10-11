@@ -24,9 +24,9 @@ concurrency:
 
 jobs:
   monitor:
-    name: Check official GATE CS source links
+    name: Scan GATE CS sources and candidate questions
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 25
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7
@@ -42,7 +42,7 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt
 
-      - name: Run source-monitor tests
+      - name: Run source and extractor unit tests
         run: python -m unittest discover -s tests -v
 
       - name: Scan official index pages
@@ -50,34 +50,44 @@ jobs:
         env:
           PYTHONUNBUFFERED: '1'
 
-      - name: Explain partial source failures
+      - name: Extract candidates from paired official CS paper/key PDFs
+        run: python scripts/extract_cs_questions.py
+        env:
+          PYTHONUNBUFFERED: '1'
+
+      - name: Print source and extraction summary
         if: success()
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
-          report = json.loads(Path('data/sync-report.json').read_text(encoding='utf-8'))
-          if report['overall_status'] != 'ok':
-              print('::warning::At least one official source page could not be checked. See data/sync-report.json.')
-          print('Source monitor status:', report['overall_status'])
-          print('Candidates found:', report['totals']['candidate_documents'])
-          print('New/changed/removed:', report['totals']['new_documents'], report['totals']['changed_documents'], report['totals']['removed_documents'])
+          source = json.loads(Path('data/sync-report.json').read_text(encoding='utf-8'))
+          extraction = json.loads(Path('data/extraction-report.json').read_text(encoding='utf-8'))
+          if source['overall_status'] != 'ok':
+              print('::warning::At least one official source page could not be checked.')
+          if extraction['status'] != 'ok':
+              print('::warning::Question extraction is partial; inspect data/extraction-report.json.')
+          print('Source scan:', source['overall_status'], source['totals'])
+          print('Extraction:', extraction['status'], extraction['candidate_count'], 'candidate records')
+          print('Pairs attempted:', extraction['pairs_attempted'])
+          print('Extraction warnings:', extraction['questions_with_extraction_warnings'])
           PY
 
-      - name: Commit updated source metadata
+      - name: Commit source index and pending review queue
         if: success()
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add data/source-index.json data/sync-report.json
+          git add data/source-index.json data/sync-report.json data/extraction-queue.json data/extraction-report.json
           if git diff --cached --quiet; then
-            echo 'No source metadata changes to commit.'
+            echo 'No source or candidate changes.'
           else
-            git commit -m 'chore: refresh official GATE source index'
+            git commit -m 'chore: refresh official sources and question candidates'
+            git pull --rebase origin main
             git push
           fi
 
-      - name: Upload source index and report
+      - name: Upload source and extraction reports
         if: always()
         uses: actions/upload-artifact@v7
         with:
@@ -85,5 +95,7 @@ jobs:
           path: |
             data/source-index.json
             data/sync-report.json
+            data/extraction-queue.json
+            data/extraction-report.json
           if-no-files-found: warn
           retention-days: 30
