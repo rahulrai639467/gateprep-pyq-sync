@@ -115,7 +115,7 @@ def classify_document(title: str, url: str) -> str:
     path = urlsplit(url).path
     text = (title + " " + path).lower()
     compact = text.replace("_", " ").replace("-", " ")
-    if re.search(r"answer[\\s_-]*keys?|final[\\s_-]*keys?|key[\\s]*/[\\s]*range|(?:^|[/_. -])keys?(?:[/_. -]|[0-9]|$)", text):
+    if re.search(r"answer[\s_-]*keys?|final[\s_-]*keys?|key[\s]*/[\s]*range|(?:^|[/_. -])keys?(?:[/_. -]|[0-9]|$)", text):
         return "answer_key"
     if "bulk" in compact and ("paper" in compact or "archive" in compact):
         return "bulk_archive"
@@ -124,7 +124,7 @@ def classify_document(title: str, url: str) -> str:
         return "bulk_archive" if "bulk" in compact or "all papers" in compact else "archive"
     if "computer science" in compact or "information technology" in compact or CS_PATTERN.search(compact):
         return "question_paper_or_cs_resource"
-    if "question paper" in compact or re.search(r"\\bqp\\b", compact):
+    if "question paper" in compact or re.search(r"\bqp\b", compact):
         return "question_paper_or_cs_resource"
     return "official_file_other"
 
@@ -260,8 +260,8 @@ def scan_source(
                 "stale": False,
             }
             path_and_title = title + " " + urlsplit(url).path
-            range_match = re.search(r"(200[7-9]|201\\d|202[0-6])\\s*(?:to|-|–)\\s*(200[7-9]|201\\d|202[0-6])", path_and_title, re.I)
-            year_match = re.search(r"(?<!\\d)(200[7-9]|201\\d|202[0-6])(?!\\d)", urlsplit(url).path)
+            range_match = re.search(r"(200[7-9]|201\d|202[0-6])\s*(?:to|-|–)\s*(200[7-9]|201\d|202[0-6])", path_and_title, re.I)
+            year_match = re.search(r"(?<!\d)(200[7-9]|201\d|202[0-6])(?!\d)", urlsplit(url).path)
             if year_match is None:
                 year_match = YEAR_PATTERN.search(title)
             doc["year_hint"] = int(year_match.group(1)) if year_match else None
