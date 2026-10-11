@@ -111,16 +111,20 @@ def parse_links(html: str, base_url: str) -> list[dict[str, str]]:
 
 
 def classify_document(title: str, url: str) -> str:
-    text = (title + " " + urlsplit(url).path.rsplit("/", 1)[-1]).lower()
+    """Classify by visible link text and full URL path, not just the filename."""
+    path = urlsplit(url).path
+    text = (title + " " + path).lower()
     compact = text.replace("_", " ").replace("-", " ")
-    if re.search(r"answer\s*key|answerkey|key\s*/\s*range|final\s*key", compact):
+    if re.search(r"answer[\\s_-]*keys?|final[\\s_-]*keys?|key[\\s]*/[\\s]*range|(?:^|[/_. -])keys?(?:[/_. -]|[0-9]|$)", text):
         return "answer_key"
-    suffix = Path(urlsplit(url).path).suffix.lower()
+    if "bulk" in compact and ("paper" in compact or "archive" in compact):
+        return "bulk_archive"
+    suffix = Path(path).suffix.lower()
     if suffix in {".zip", ".rar", ".7z"}:
         return "bulk_archive" if "bulk" in compact or "all papers" in compact else "archive"
     if "computer science" in compact or "information technology" in compact or CS_PATTERN.search(compact):
         return "question_paper_or_cs_resource"
-    if "question paper" in compact or re.search(r"\bqp\b", compact):
+    if "question paper" in compact or re.search(r"\\bqp\\b", compact):
         return "question_paper_or_cs_resource"
     return "official_file_other"
 
@@ -190,8 +194,8 @@ def load_json(path: Path, default: Any) -> Any:
 
 
 def metadata_changed(old: dict[str, Any], new: dict[str, Any]) -> bool:
-    # A field counts as evidence of change only when both runs returned it.
-    for key in ("etag", "last_modified", "content_length"):
+    # Avoid noisy diffs when a host omits metadata, but detect meaningful index changes.
+    for key in ("etag", "last_modified", "content_length", "document_type", "year_hint", "year_range", "title"):
         if old.get(key) not in (None, "") and new.get(key) not in (None, ""):
             if old.get(key) != new.get(key):
                 return True
@@ -199,7 +203,7 @@ def metadata_changed(old: dict[str, Any], new: dict[str, Any]) -> bool:
 
 
 def scan_source(
-    session: requests.Session, source: dict[str, Any], allowed_hosts: list[str], previous_docs: list[dict[str, Any]]
+    session: requests.Session, source: dict[str, Any], allowed_hosts: list[str], document_hosts: list[str], previous_docs: list[dict[str, Any]]
 ) -> tuple[dict[str, Any], list[dict[str, Any]]]:
     source_url = source["index_url"]
     started = utc_now()
@@ -228,7 +232,7 @@ def scan_source(
         links = parse_links(html, final_url)
         downloads: list[dict[str, str]] = []
         for link in links:
-            if not host_allowed(link["url"], allowed_hosts):
+            if not host_allowed(link["url"], document_hosts):
                 continue
             if not is_candidate_file(link["text"], link["url"]):
                 continue
@@ -250,12 +254,19 @@ def scan_source(
                 "host": urlsplit(url).hostname,
                 "document_type": classify_document(title, url),
                 "year_hint": None,
+                "year_range": None,
                 "first_seen_at": old.get("first_seen_at", now),
                 "last_seen_at": now,
                 "stale": False,
             }
-            year_match = YEAR_PATTERN.search(title + " " + url)
+            path_and_title = title + " " + urlsplit(url).path
+            range_match = re.search(r"(200[7-9]|201\\d|202[0-6])\\s*(?:to|-|–)\\s*(200[7-9]|201\\d|202[0-6])", path_and_title, re.I)
+            year_match = re.search(r"(?<!\\d)(200[7-9]|201\\d|202[0-6])(?!\\d)", urlsplit(url).path)
+            if year_match is None:
+                year_match = YEAR_PATTERN.search(title)
             doc["year_hint"] = int(year_match.group(1)) if year_match else None
+            if range_match:
+                doc["year_range"] = {"start": int(range_match.group(1)), "end": int(range_match.group(2))}
             doc.update(probe_file(session, url))
             documents.append(doc)
 
@@ -307,6 +318,7 @@ def main() -> int:
 
     sources = config["official_sources"]
     allowed_hosts = [str(host).lower() for host in config.get("allowed_hosts", [])]
+    document_hosts = [str(host).lower() for host in config.get("allowed_document_hosts", allowed_hosts)]
     for source in sources:
         host = (urlsplit(source.get("index_url", "")).hostname or "").lower()
         if host and host not in allowed_hosts:
@@ -328,7 +340,7 @@ def main() -> int:
             {},
         )
         source_for_scan = {**source, "previous_page_sha256": prior_result.get("page_sha256")}
-        result, documents = scan_source(session, source_for_scan, allowed_hosts, previous_docs)
+        result, documents = scan_source(session, source_for_scan, allowed_hosts, document_hosts, previous_docs)
         results.append(result)
         current_docs.extend(documents)
         if result["status"] == "ok":
