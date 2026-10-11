@@ -132,6 +132,11 @@ def split_questions(text: str) -> dict[int, str]:
     """Split on printed question labels, ignoring banners such as 'Q.1–Q.5 Carry...'."""
     accepted: list[re.Match[str]] = []
     for match in QUESTION_MARKER.finditer(text):
+        # The second label in a section banner such as "Q.1 - Q.5 Carry..." is
+        # not a real question start, even though it is not part of the first match.
+        prefix = text[max(0, match.start() - 40):match.start()]
+        if re.search(r"Q\.\s*\d{1,2}\s*[-–—]\s*$", prefix, re.I):
+            continue
         tail = text[match.end():match.end() + 100]
         if re.match(r"\s*[–—-]\s*Q\.\s*\d{1,2}\s+Carry\b", tail, re.I):
             continue
