@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-11T18:16:28+00:00",
+  "status": "ok",
+  "note": "Candidate text and key mapping are not verified. Every record is kept in needs-review; no solution or memory tip is invented.",
+  "pairs_attempted": 9,
+  "pairs": [
+    {
+      "year": 2021,
+      "paperCode": "CS",
+      "paperUrl": "https://gate2026.iitg.ac.in/doc/download/2021/cs_2021.pdf",
+      "answerKeyUrl": "https://gate2026.iitg.ac.in/doc/download/Answer_keys2021/cs_merged_2021.pdf",
+      "parsedQuestions": 0,
+      "answerKeyRows": 0,
+      "matchedCandidates": 0,
+      "questionNumbersWithoutKeyRow": [],
+      "status": "no-matches"
+    },
+    {
+      "year": 2022,
+      "paperCode": "CS",
+      "paperUrl": "https://gate2026.iitg.ac.in/doc/download/2022/cs_2022.pdf",
+      "answerKeyUrl": "https://gate2026.iitg.ac.in/doc/download/Answer_keys2022/cs_2022.pdf",
+      "parsedQuestions": 65,
+      "answerKeyRows": 65,
+      "matchedCandidates": 65,
+      "questionNumbersWithoutKeyRow": [],
+      "status": "ok"
+    },
+    {
+      "year": 2023,
+      "paperCode": "CS",
+      "paperUrl": "https://gate2026.iitg.ac.in/doc/download/2023/cs_2023.pdf",
+      "answerKeyUrl": "https://gate2026.iitg.ac.in/doc/download/Answer_keys2023/CS_ANS_GATE2023.pdf",
+      "parsedQuestions": 65,
+      "answerKeyRows": 65,
+      "matchedCandidates": 65,
+      "questionNumbersWithoutKeyRow": [],
+      "status": "ok"
+    },
+    {
+      "year": 2024,
+      "paperCode": "CS-1",
+      "paperUrl": "https://gate2026.iitg.ac.in/doc/download/2024/CS124S5.pdf",
+      "answerKeyUrl": "https://gate2026.iitg.ac.in/doc/download/2024/CS1FinalAnswerKey.pdf",
+      "parsedQuestions": 65,
+      "answerKeyRows": 65,
+      "matchedCandidates": 65,
+      "questionNumbersWithoutKeyRow": [],
+      "status": "ok"
+    },
+    {
+      "year": 2024,
+      "paperCode": "CS-2",
+      "paperUrl": "https://gate2026.iitg.ac.in/doc/download/2024/CS224S6.pdf",
+      "answerKeyUrl": "https://gate2026.iitg.ac.in/doc/download/2024/CS2FinalAnswerKey.pdf",
+      "parsedQuestions": 65,
+      "answerKeyRows": 65,
+      "matchedCandidates": 65,
+      "questionNumbersWithoutKeyRow": [],
+      "status": "ok"
+    },
+    {
+      "year": 2025,
+      "paperCode": "CS-1",
+      "paperUrl": "https://gate2026.iitg.ac.in/doc/download/2025/CS12025.pdf",
+      "answerKeyUrl": "https://gate2026.iitg.ac.in/doc/download/2025_Key/CS1_Keys.pdf",
+      "parsedQuestions": 65,
+      "answerKeyRows": 65,
+      "matchedCandidates": 65,
+      "questionNumbersWithoutKeyRow": [],
+      "status": "ok"
+    },
+    {
+      "year": 2025,
+      "paperCode": "CS-2",
+      "paperUrl": "https://gate2026.iitg.ac.in/doc/download/2025/CS22025.pdf",
+      "answerKeyUrl": "https://gate2026.iitg.ac.in/doc/download/2025_Key/CS2_Keys.pdf",
+      "parsedQuestions": 65,
+      "answerKeyRows": 65,
+      "matchedCandidates": 65,
+      "questionNumbersWithoutKeyRow": [],
+      "status": "ok"
+    },
+    {
+      "year": 2026,
+      "paperCode": "CS-1",
+      "paperUrl": "https://gate2026.iitg.ac.in/doc/download/2026/QPs/CS1.pdf",
+      "answerKeyUrl": "https://gate2026.iitg.ac.in/doc/download/2026/Keys/CS1_Keys.pdf",
+      "parsedQuestions": 65,
+      "answerKeyRows": 65,
+      "matchedCandidates": 65,
+      "questionNumbersWithoutKeyRow": [],
+      "status": "ok"
+    },
+    {
+      "year": 2026,
+      "paperCode": "CS-2",
+      "paperUrl": "https://gate2026.iitg.ac.in/doc/download/2026/QPs/CS2.pdf",
+      "answerKeyUrl": "https://gate2026.iitg.ac.in/doc/download/2026/Keys/CS2_Keys.pdf",
+      "parsedQuestions": 65,
+      "answerKeyRows": 65,
+      "matchedCandidates": 65,
+      "questionNumbersWithoutKeyRow": [],
+      "status": "ok"
+    }
+  ],
+  "candidate_count": 520,
+  "pairing_issues": [
+    {
+      "year": 2019,
+      "paperCode": "CS",
+      "paperUrl": "https://gate2026.iitg.ac.in/doc/download/2019/cs_2019.pdf",
+      "issue": "No unique matching official answer-key PDF; skipped rather than guessing answers."
+    },
+    {
+      "year": 2020,
+      "paperCode": "CS",
+      "paperUrl": "https://gate2026.iitg.ac.in/doc/download/2020/cs_2020.pdf",
+      "issue": "No unique matching official answer-key PDF; skipped rather than guessing answers."
+    }
+  ],
+  "failures": [],
+  "questions_with_extraction_warnings": 138
+}
