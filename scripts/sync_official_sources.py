@@ -194,11 +194,15 @@ def load_json(path: Path, default: Any) -> Any:
 
 
 def metadata_changed(old: dict[str, Any], new: dict[str, Any]) -> bool:
-    # Avoid noisy diffs when a host omits metadata, but detect meaningful index changes.
-    for key in ("etag", "last_modified", "content_length", "document_type", "year_hint", "year_range", "title"):
+    # Transport metadata is compared only when both runs supplied it.
+    for key in ("etag", "last_modified", "content_length"):
         if old.get(key) not in (None, "") and new.get(key) not in (None, ""):
             if old.get(key) != new.get(key):
                 return True
+    # Classification changes (including newly inferred years) are real metadata changes.
+    for key in ("document_type", "year_hint", "year_range", "title"):
+        if key in old and old.get(key) != new.get(key):
+            return True
     return False
 
 
@@ -264,7 +268,7 @@ def scan_source(
             year_match = re.search(r"(?<!\d)(200[7-9]|201\d|202[0-6])(?!\d)", urlsplit(url).path)
             if year_match is None:
                 year_match = YEAR_PATTERN.search(title)
-            doc["year_hint"] = int(year_match.group(1)) if year_match else None
+            doc["year_hint"] = None if range_match else (int(year_match.group(1)) if year_match else None)
             if range_match:
                 doc["year_range"] = {"start": int(range_match.group(1)), "end": int(range_match.group(2))}
             doc.update(probe_file(session, url))
