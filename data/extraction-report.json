@@ -1,21 +1,10 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-15T07:34:04+00:00",
+  "generated_at": "2026-10-19T07:54:40+00:00",
   "status": "degraded",
   "note": "Candidate text and key mapping are not verified. Every record is kept in needs-review; no solution or memory tip is invented.",
   "pairs_attempted": 9,
   "pairs": [
-    {
-      "year": 2021,
-      "paperCode": "CS",
-      "paperUrl": "https://gate2026.iitg.ac.in/doc/download/2021/cs_2021.pdf",
-      "answerKeyUrl": "https://gate2026.iitg.ac.in/doc/download/Answer_keys2021/cs_merged_2021.pdf",
-      "parsedQuestions": 0,
-      "answerKeyRows": 0,
-      "matchedCandidates": 0,
-      "questionNumbersWithoutKeyRow": [],
-      "status": "no-matches"
-    },
     {
       "year": 2022,
       "paperCode": "CS",
@@ -120,6 +109,13 @@
       "issue": "No unique matching official answer-key PDF; skipped rather than guessing answers."
     }
   ],
-  "failures": [],
+  "failures": [
+    {
+      "pair": "2021 CS",
+      "paperUrl": "https://gate2026.iitg.ac.in/doc/download/2021/cs_2021.pdf",
+      "answerKeyUrl": "https://gate2026.iitg.ac.in/doc/download/Answer_keys2021/cs_merged_2021.pdf",
+      "error": "ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+    }
+  ],
   "questions_with_extraction_warnings": 138
 }
