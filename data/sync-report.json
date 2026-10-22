@@ -1,18 +1,29 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-10-19T07:53:46+00:00",
-  "overall_status": "ok",
+  "checked_at": "2026-10-22T07:41:54+00:00",
+  "overall_status": "failed",
   "note": "This report tracks official source pages and file metadata. It does not contain question text and does not automatically verify question answers.",
   "totals": {
     "sources_attempted": 2,
-    "sources_ok": 2,
-    "sources_failed": 0,
+    "sources_ok": 0,
+    "sources_failed": 2,
     "candidate_documents": 21,
     "new_documents": 0,
     "changed_documents": 0,
     "removed_documents": 0
   },
-  "failed_sources": [],
+  "failed_sources": [
+    {
+      "source_id": "gate-2026-downloads",
+      "index_url": "https://gate2026.iitg.ac.in/download.html",
+      "error": "ConnectionError: HTTPSConnectionPool(host='gate2026.iitg.ac.in', port=443): Max retries exceeded with url: /download.html (Caused by NewConnectionError(\"HTTPSConnection(host='gate2026.iitg.ac.in', port=443): Failed to establish a new connection: [Errno 111] Connection refused\"))"
+    },
+    {
+      "source_id": "gate-2026-papers-keys",
+      "index_url": "https://gate2026.iitg.ac.in/QPs-answer-keys.html",
+      "error": "ConnectionError: HTTPSConnectionPool(host='gate2026.iitg.ac.in', port=443): Max retries exceeded with url: /QPs-answer-keys.html (Caused by NewConnectionError(\"HTTPSConnection(host='gate2026.iitg.ac.in', port=443): Failed to establish a new connection: [Errno 111] Connection refused\"))"
+    }
+  ],
   "new_documents": [],
   "changed_documents": [],
   "removed_documents": []
