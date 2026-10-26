@@ -1,11 +1,111 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-22T07:41:59+00:00",
+  "generated_at": "2026-10-26T07:53:46+00:00",
   "status": "degraded",
   "note": "Candidate text and key mapping are not verified. Every record is kept in needs-review; no solution or memory tip is invented.",
   "pairs_attempted": 9,
-  "pairs": [],
-  "candidate_count": 0,
+  "pairs": [
+    {
+      "year": 2021,
+      "paperCode": "CS",
+      "paperUrl": "https://gate2026.iitg.ac.in/doc/download/2021/cs_2021.pdf",
+      "answerKeyUrl": "https://gate2026.iitg.ac.in/doc/download/Answer_keys2021/cs_merged_2021.pdf",
+      "parsedQuestions": 0,
+      "answerKeyRows": 0,
+      "matchedCandidates": 0,
+      "questionNumbersWithoutKeyRow": [],
+      "status": "no-matches"
+    },
+    {
+      "year": 2022,
+      "paperCode": "CS",
+      "paperUrl": "https://gate2026.iitg.ac.in/doc/download/2022/cs_2022.pdf",
+      "answerKeyUrl": "https://gate2026.iitg.ac.in/doc/download/Answer_keys2022/cs_2022.pdf",
+      "parsedQuestions": 65,
+      "answerKeyRows": 65,
+      "matchedCandidates": 65,
+      "questionNumbersWithoutKeyRow": [],
+      "status": "ok"
+    },
+    {
+      "year": 2023,
+      "paperCode": "CS",
+      "paperUrl": "https://gate2026.iitg.ac.in/doc/download/2023/cs_2023.pdf",
+      "answerKeyUrl": "https://gate2026.iitg.ac.in/doc/download/Answer_keys2023/CS_ANS_GATE2023.pdf",
+      "parsedQuestions": 65,
+      "answerKeyRows": 65,
+      "matchedCandidates": 65,
+      "questionNumbersWithoutKeyRow": [],
+      "status": "ok"
+    },
+    {
+      "year": 2024,
+      "paperCode": "CS-1",
+      "paperUrl": "https://gate2026.iitg.ac.in/doc/download/2024/CS124S5.pdf",
+      "answerKeyUrl": "https://gate2026.iitg.ac.in/doc/download/2024/CS1FinalAnswerKey.pdf",
+      "parsedQuestions": 65,
+      "answerKeyRows": 65,
+      "matchedCandidates": 65,
+      "questionNumbersWithoutKeyRow": [],
+      "status": "ok"
+    },
+    {
+      "year": 2024,
+      "paperCode": "CS-2",
+      "paperUrl": "https://gate2026.iitg.ac.in/doc/download/2024/CS224S6.pdf",
+      "answerKeyUrl": "https://gate2026.iitg.ac.in/doc/download/2024/CS2FinalAnswerKey.pdf",
+      "parsedQuestions": 65,
+      "answerKeyRows": 65,
+      "matchedCandidates": 65,
+      "questionNumbersWithoutKeyRow": [],
+      "status": "ok"
+    },
+    {
+      "year": 2025,
+      "paperCode": "CS-1",
+      "paperUrl": "https://gate2026.iitg.ac.in/doc/download/2025/CS12025.pdf",
+      "answerKeyUrl": "https://gate2026.iitg.ac.in/doc/download/2025_Key/CS1_Keys.pdf",
+      "parsedQuestions": 65,
+      "answerKeyRows": 65,
+      "matchedCandidates": 65,
+      "questionNumbersWithoutKeyRow": [],
+      "status": "ok"
+    },
+    {
+      "year": 2025,
+      "paperCode": "CS-2",
+      "paperUrl": "https://gate2026.iitg.ac.in/doc/download/2025/CS22025.pdf",
+      "answerKeyUrl": "https://gate2026.iitg.ac.in/doc/download/2025_Key/CS2_Keys.pdf",
+      "parsedQuestions": 65,
+      "answerKeyRows": 65,
+      "matchedCandidates": 65,
+      "questionNumbersWithoutKeyRow": [],
+      "status": "ok"
+    },
+    {
+      "year": 2026,
+      "paperCode": "CS-1",
+      "paperUrl": "https://gate2026.iitg.ac.in/doc/download/2026/QPs/CS1.pdf",
+      "answerKeyUrl": "https://gate2026.iitg.ac.in/doc/download/2026/Keys/CS1_Keys.pdf",
+      "parsedQuestions": 65,
+      "answerKeyRows": 65,
+      "matchedCandidates": 65,
+      "questionNumbersWithoutKeyRow": [],
+      "status": "ok"
+    },
+    {
+      "year": 2026,
+      "paperCode": "CS-2",
+      "paperUrl": "https://gate2026.iitg.ac.in/doc/download/2026/QPs/CS2.pdf",
+      "answerKeyUrl": "https://gate2026.iitg.ac.in/doc/download/2026/Keys/CS2_Keys.pdf",
+      "parsedQuestions": 65,
+      "answerKeyRows": 65,
+      "matchedCandidates": 65,
+      "questionNumbersWithoutKeyRow": [],
+      "status": "ok"
+    }
+  ],
+  "candidate_count": 520,
   "pairing_issues": [
     {
       "year": 2019,
@@ -20,61 +120,6 @@
       "issue": "No unique matching official answer-key PDF; skipped rather than guessing answers."
     }
   ],
-  "failures": [
-    {
-      "pair": "2021 CS",
-      "paperUrl": "https://gate2026.iitg.ac.in/doc/download/2021/cs_2021.pdf",
-      "answerKeyUrl": "https://gate2026.iitg.ac.in/doc/download/Answer_keys2021/cs_merged_2021.pdf",
-      "error": "ConnectionError: HTTPSConnectionPool(host='gate2026.iitg.ac.in', port=443): Max retries exceeded with url: /doc/download/2021/cs_2021.pdf (Caused by NewConnectionError(\"HTTPSConnection(host='gate2026.iitg.ac.in', port=443): Failed to establish a new connection: [Errno 111] Connection refused\"))"
-    },
-    {
-      "pair": "2022 CS",
-      "paperUrl": "https://gate2026.iitg.ac.in/doc/download/2022/cs_2022.pdf",
-      "answerKeyUrl": "https://gate2026.iitg.ac.in/doc/download/Answer_keys2022/cs_2022.pdf",
-      "error": "ConnectionError: HTTPSConnectionPool(host='gate2026.iitg.ac.in', port=443): Max retries exceeded with url: /doc/download/2022/cs_2022.pdf (Caused by NewConnectionError(\"HTTPSConnection(host='gate2026.iitg.ac.in', port=443): Failed to establish a new connection: [Errno 111] Connection refused\"))"
-    },
-    {
-      "pair": "2023 CS",
-      "paperUrl": "https://gate2026.iitg.ac.in/doc/download/2023/cs_2023.pdf",
-      "answerKeyUrl": "https://gate2026.iitg.ac.in/doc/download/Answer_keys2023/CS_ANS_GATE2023.pdf",
-      "error": "ConnectionError: HTTPSConnectionPool(host='gate2026.iitg.ac.in', port=443): Max retries exceeded with url: /doc/download/2023/cs_2023.pdf (Caused by NewConnectionError(\"HTTPSConnection(host='gate2026.iitg.ac.in', port=443): Failed to establish a new connection: [Errno 111] Connection refused\"))"
-    },
-    {
-      "pair": "2024 CS-1",
-      "paperUrl": "https://gate2026.iitg.ac.in/doc/download/2024/CS124S5.pdf",
-      "answerKeyUrl": "https://gate2026.iitg.ac.in/doc/download/2024/CS1FinalAnswerKey.pdf",
-      "error": "ConnectionError: HTTPSConnectionPool(host='gate2026.iitg.ac.in', port=443): Max retries exceeded with url: /doc/download/2024/CS124S5.pdf (Caused by NewConnectionError(\"HTTPSConnection(host='gate2026.iitg.ac.in', port=443): Failed to establish a new connection: [Errno 111] Connection refused\"))"
-    },
-    {
-      "pair": "2024 CS-2",
-      "paperUrl": "https://gate2026.iitg.ac.in/doc/download/2024/CS224S6.pdf",
-      "answerKeyUrl": "https://gate2026.iitg.ac.in/doc/download/2024/CS2FinalAnswerKey.pdf",
-      "error": "ConnectionError: HTTPSConnectionPool(host='gate2026.iitg.ac.in', port=443): Max retries exceeded with url: /doc/download/2024/CS224S6.pdf (Caused by NewConnectionError(\"HTTPSConnection(host='gate2026.iitg.ac.in', port=443): Failed to establish a new connection: [Errno 111] Connection refused\"))"
-    },
-    {
-      "pair": "2025 CS-1",
-      "paperUrl": "https://gate2026.iitg.ac.in/doc/download/2025/CS12025.pdf",
-      "answerKeyUrl": "https://gate2026.iitg.ac.in/doc/download/2025_Key/CS1_Keys.pdf",
-      "error": "ConnectionError: HTTPSConnectionPool(host='gate2026.iitg.ac.in', port=443): Max retries exceeded with url: /doc/download/2025/CS12025.pdf (Caused by NewConnectionError(\"HTTPSConnection(host='gate2026.iitg.ac.in', port=443): Failed to establish a new connection: [Errno 111] Connection refused\"))"
-    },
-    {
-      "pair": "2025 CS-2",
-      "paperUrl": "https://gate2026.iitg.ac.in/doc/download/2025/CS22025.pdf",
-      "answerKeyUrl": "https://gate2026.iitg.ac.in/doc/download/2025_Key/CS2_Keys.pdf",
-      "error": "ConnectionError: HTTPSConnectionPool(host='gate2026.iitg.ac.in', port=443): Max retries exceeded with url: /doc/download/2025/CS22025.pdf (Caused by NewConnectionError(\"HTTPSConnection(host='gate2026.iitg.ac.in', port=443): Failed to establish a new connection: [Errno 111] Connection refused\"))"
-    },
-    {
-      "pair": "2026 CS-1",
-      "paperUrl": "https://gate2026.iitg.ac.in/doc/download/2026/QPs/CS1.pdf",
-      "answerKeyUrl": "https://gate2026.iitg.ac.in/doc/download/2026/Keys/CS1_Keys.pdf",
-      "error": "ConnectionError: HTTPSConnectionPool(host='gate2026.iitg.ac.in', port=443): Max retries exceeded with url: /doc/download/2026/QPs/CS1.pdf (Caused by NewConnectionError(\"HTTPSConnection(host='gate2026.iitg.ac.in', port=443): Failed to establish a new connection: [Errno 111] Connection refused\"))"
-    },
-    {
-      "pair": "2026 CS-2",
-      "paperUrl": "https://gate2026.iitg.ac.in/doc/download/2026/QPs/CS2.pdf",
-      "answerKeyUrl": "https://gate2026.iitg.ac.in/doc/download/2026/Keys/CS2_Keys.pdf",
-      "error": "ConnectionError: HTTPSConnectionPool(host='gate2026.iitg.ac.in', port=443): Max retries exceeded with url: /doc/download/2026/QPs/CS2.pdf (Caused by NewConnectionError(\"HTTPSConnection(host='gate2026.iitg.ac.in', port=443): Failed to establish a new connection: [Errno 111] Connection refused\"))"
-    }
-  ],
-  "questions_with_extraction_warnings": 0
+  "failures": [],
+  "questions_with_extraction_warnings": 138
 }
