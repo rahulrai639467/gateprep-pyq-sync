@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-26T07:53:46+00:00",
+  "generated_at": "2026-10-29T08:37:52+00:00",
   "status": "degraded",
   "note": "Candidate text and key mapping are not verified. Every record is kept in needs-review; no solution or memory tip is invented.",
   "pairs_attempted": 9,
